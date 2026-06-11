@@ -10,9 +10,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- FontAwesome for Publication-Grade Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- MathJax for Beautiful Academic Math Rendering -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es6/tex-mml-chtml.js"></script>
     <style>
         /* Custom scrollbar styling for premium UI feel */
         ::-webkit-scrollbar {
@@ -51,7 +48,7 @@
                 </p>
             </div>
             <div class="flex items-center gap-3 w-full md:w-auto justify-end">
-                <a href="https://github.com" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-lg text-sm font-semibold transition flex items-center gap-2 border border-slate-700 shadow-md">
+                <a href="https://github.com/vothikimanh1007/cellular-sheaf-hodge" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-lg text-sm font-semibold transition flex items-center gap-2 border border-slate-700 shadow-md">
                     <i class="fa-brands fa-github text-base"></i> GitHub Repo
                 </a>
                 <span class="bg-emerald-500 text-slate-950 px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 shadow-lg shadow-emerald-500/15">
@@ -84,10 +81,10 @@
                             <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">Network Topology</label>
                             <div class="grid grid-cols-2 gap-2">
                                 <button id="btn-graph-cycle" onclick="setGraphType('cycle')" class="py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center gap-2 bg-emerald-500/10 border-emerald-500/30 text-emerald-400">
-                                    <i class="fa-solid fa-circle-nodes"></i> Cycle Graph \(C_6\)
+                                    <i class="fa-solid fa-circle-nodes"></i> Cycle Graph <i>C</i><sub>6</sub>
                                 </button>
                                 <button id="btn-graph-bipartite" onclick="setGraphType('bipartite')" class="py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center gap-2 bg-slate-800 border-slate-700 text-slate-300">
-                                    <i class="fa-solid fa-network-wired"></i> Bipartite \(K_{3,3}\\)
+                                    <i class="fa-solid fa-network-wired"></i> Bipartite <i>K</i><sub>3,3</sub>
                                 </button>
                             </div>
                         </div>
@@ -99,7 +96,7 @@
                                 <button id="btn-sheaf-orth" onclick="setSheafType('orthogonal')" class="w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-start gap-3 bg-emerald-500/10 border-emerald-500/30 text-emerald-400">
                                     <i class="fa-solid fa-rotate mt-0.5 text-sm"></i>
                                     <div>
-                                        <p class="font-extrabold text-slate-100">Anisotropic Orthogonal Sheaf \(O(d)\)</p>
+                                        <p class="font-extrabold text-slate-100">Anisotropic Orthogonal Sheaf <i>O</i>(<i>d</i>)</p>
                                         <p class="text-[10px] text-emerald-400/80 font-normal mt-0.5">Rotational restriction maps. Guarantees non-trivial global sections.</p>
                                     </div>
                                 </button>
@@ -146,7 +143,7 @@
                         <div class="space-y-3 pt-2">
                             <div>
                                 <div class="flex justify-between items-center mb-1.5">
-                                    <label class="text-[10px] font-semibold text-slate-400 uppercase tracking-widest">Step Size (\(dt\))</label>
+                                    <label class="text-[10px] font-semibold text-slate-400 uppercase tracking-widest">Step Size (<i>dt</i>)</label>
                                     <span id="val-dt" class="text-xs font-mono text-emerald-400 font-bold">0.05</span>
                                 </div>
                                 <input type="range" id="slider-dt" min="0.01" max="0.2" step="0.01" value="0.05" oninput="updateDt(this.value)" class="w-full accent-emerald-500 bg-slate-800 h-1.5 rounded-lg appearance-none cursor-pointer">
@@ -181,7 +178,7 @@
                             <h2 class="text-base font-bold text-slate-100">Geometric Attractor View</h2>
                         </div>
                         <span class="text-[10px] font-mono text-slate-400 bg-slate-950 px-2.5 py-1 rounded-md border border-slate-800">
-                            Time \(t\) = <span id="val-time-step" class="text-emerald-400 font-bold">0.0</span>
+                            Time <i>t</i> = <span id="val-time-step" class="text-emerald-400 font-bold">0.0</span>
                         </span>
                     </div>
 
@@ -223,14 +220,14 @@
                         <div class="p-3 bg-slate-950/60 border border-slate-800 rounded-xl flex justify-between items-center">
                             <div>
                                 <p class="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">Hodge Orthogonality</p>
-                                <p class="text-[10px] text-slate-500 mt-0.5">\(\langle h, \delta^\top \psi \rangle\) Inner Product</p>
+                                <p class="text-[10px] text-slate-500 mt-0.5">&langle;<i>h</i>, &delta;<sup>&top;</sup> &psi;&rangle; Inner Product</p>
                             </div>
                             <span id="metric-orthogonality" class="text-xs font-mono font-extrabold text-emerald-400">1.11e-16</span>
                         </div>
 
                         <div class="p-3 bg-slate-950/60 border border-slate-800 rounded-xl flex justify-between items-center">
                             <div>
-                                <p class="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">Spectral Gap (\(\lambda_2\))</p>
+                                <p class="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">Spectral Gap (&lambda;<sub>2</sub>)</p>
                                 <p class="text-[10px] text-slate-500 mt-0.5">Algebraic Connectivity</p>
                             </div>
                             <span id="metric-spectral-gap" class="text-xs font-mono font-extrabold text-blue-400">0.347</span>
@@ -252,7 +249,7 @@
                     <div class="w-full bg-slate-950 border border-slate-800/80 rounded-xl overflow-hidden h-36 flex items-center justify-center relative">
                         <canvas id="canvas-takens" class="w-full h-full"></canvas>
                         <span class="absolute bottom-2 right-2 text-[9px] font-mono text-slate-500 bg-slate-900/80 px-1.5 py-0.5 rounded border border-slate-800">
-                            Y(t) = [x(t), x(t-&tau;)]
+                            <i>Y</i>(<i>t</i>) = [<i>x</i>(<i>t</i>), <i>x</i>(<i>t</i>-&tau;)]
                         </span>
                     </div>
                 </div>
@@ -289,7 +286,7 @@
                 <!-- Selection Panel for Simulator configuration -->
                 <div class="flex items-center gap-3">
                     <div class="flex items-center gap-1.5 text-xs text-slate-400">
-                        <span class="font-semibold text-slate-300">Point Cloud Size (\(N\)):</span>
+                        <span class="font-semibold text-slate-300">Point Cloud Size (<i>N</i>):</span>
                         <select id="mcu-window-size" onchange="runMcuSimulation()" class="bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-xs text-emerald-400 font-bold focus:outline-none focus:border-emerald-500/50">
                             <option value="32" selected>32 Samples</option>
                             <option value="64">64 Samples</option>
@@ -726,18 +723,18 @@
         // --- USER INTERFACE HANDLERS ---
         function setGraphType(type) {
             graphType = type;
-            document.getElementById('btn-graph-cycle').className = type === 'cycle' ? "py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center gap-2 bg-emerald-500/10 border-emerald-500/30 text-emerald-400" : "py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center gap-2 bg-slate-800 border-slate-700 text-slate-300";
-            document.getElementById('btn-graph-bipartite').className = type === 'bipartite' ? "py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center gap-2 bg-emerald-500/10 border-emerald-500/30 text-emerald-400" : "py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center gap-2 bg-slate-800 border-slate-700 text-slate-300";
+            document.getElementById('btn-graph-cycle').className = type === 'cycle' ? "py-2.5 px-3 rounded-xl border text-sm font-bold transition flex items-center justify-center gap-2 bg-emerald-500/10 border-emerald-500/30 text-emerald-400" : "py-2.5 px-3 rounded-xl border text-sm font-bold transition flex items-center justify-center gap-2 bg-slate-800 border-slate-700 text-slate-300";
+            document.getElementById('btn-graph-bipartite').className = type === 'bipartite' ? "py-2.5 px-3 rounded-xl border text-sm font-bold transition flex items-center justify-center gap-2 bg-emerald-500/10 border-emerald-500/30 text-emerald-400" : "py-2.5 px-3 rounded-xl border text-sm font-bold transition flex items-center justify-center gap-2 bg-slate-800 border-slate-700 text-slate-300";
             
             // Adjust slider controls for scalar vs vector
             const rangeInput = document.getElementById('slider-node-angle');
             if (type === 'cycle') {
-                document.getElementById('control-dimension-label').innerText = "Vector Angle (Degrees)";
+                document.getElementById('control-dimension-label').innerHTML = "Vector Angle (Degrees)";
                 rangeInput.min = "0";
                 rangeInput.max = "360";
                 rangeInput.step = "5";
             } else {
-                document.getElementById('control-dimension-label').innerText = "Scalar Node Value (x)";
+                document.getElementById('control-dimension-label').innerHTML = "Scalar Node Value (<i>x</i>)";
                 rangeInput.min = "-2";
                 rangeInput.max = "2";
                 rangeInput.step = "0.1";
@@ -746,6 +743,7 @@
             initTopology();
         }
 
+        // --- USER CONFIG SELECTIONS ---
         function setSheafType(type) {
             sheafType = type;
             document.getElementById('btn-sheaf-orth').className = type === 'orthogonal' ? "w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-start gap-3 bg-emerald-500/10 border-emerald-500/30 text-emerald-400" : "w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-start gap-3 bg-slate-800/40 border-slate-800 text-slate-300";
@@ -872,11 +870,11 @@
         }
 
         function drawTakensAttractor() {
-            ctxTakens.fillStyle = 'rgba(2, 6, 23, 0.2)'; // semi-transparent clean sweep
+            ctxTakens.fillStyle = 'rgba(2, 6, 23, 0.2)'; 
             ctxTakens.fillRect(0, 0, canvasTakens.width, canvasTakens.height);
 
             // Generate clean simulated physiological PPG pulse
-            let hr = 1.2; // Hz
+            let hr = 1.2; 
             let t_val = takensTime;
             let signal = Math.sin(t_val * hr * 2 * Math.PI) + 0.35 * Math.sin(t_val * hr * 4 * Math.PI + 0.5);
             
@@ -892,8 +890,8 @@
             ctxTakens.shadowColor = sheafType === 'orthogonal' ? 'rgba(16, 185, 129, 0.4)' : 'rgba(244, 63, 94, 0.4)';
 
             for (let i = tau; i < ppgBuffer.length; i++) {
-                const x_coord = ppgBuffer[i];      // x(t)
-                const y_coord = ppgBuffer[i - tau];  // x(t-tau)
+                const x_coord = ppgBuffer[i];      
+                const y_coord = ppgBuffer[i - tau];  
 
                 const screenX = canvasTakens.width / 2 + x_coord * (canvasTakens.width * 0.3);
                 const screenY = canvasTakens.height / 2 - y_coord * (canvasTakens.height * 0.3);
@@ -905,7 +903,7 @@
                 }
             }
             ctxTakens.stroke();
-            ctxTakens.shadowBlur = 0; // reset shadow configurations
+            ctxTakens.shadowBlur = 0; 
 
             // Draw current attractor position indicator
             if (ppgBuffer.length > tau) {
