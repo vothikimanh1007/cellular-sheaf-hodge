@@ -1,38 +1,61 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cellular Sheaf & Persistent Hodge Decomposition Dashboard</title>
-    <!-- Tailwind CSS for Premium Slate/Emerald UI -->
+    <title>Interactive Cellular Sheaf & Persistent Hodge Dashboard</title>
+    <!-- Tailwind CSS for Premium Slate/Emerald Theme -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chart.js for High-DPI Publication Plots -->
+    <!-- Chart.js for High-DPI Quantitative Charts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- FontAwesome for Icons -->
+    <!-- FontAwesome for Publication-Grade Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- MathJax for Beautiful Academic Math Rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es6/tex-mml-chtml.js"></script>
+    <style>
+        /* Custom scrollbar styling for premium UI feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10b981;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+    </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen font-sans selection:bg-emerald-500 selection:text-slate-950">
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans selection:bg-emerald-500 selection:text-slate-950 antialiased">
 
     <!-- HEADER BAR -->
-    <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur sticky top-0 z-50 px-6 py-4">
+    <header class="border-b border-slate-800 bg-slate-900/40 backdrop-blur sticky top-0 z-50 px-6 py-4">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div>
                 <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
-                    <i class="fa-solid fa-graduation-cap mr-1.5"></i> VJM / AMV Submission Suite
+                    <i class="fa-solid fa-graduation-cap mr-1.5"></i> VJM / AMV Research Companion Suite
                 </span>
                 <h1 class="text-xl md:text-2xl font-extrabold tracking-tight mt-2 text-slate-50">
                     The Persistent Hodge Decomposition of Cellular Sheaves
                 </h1>
                 <p class="text-xs md:text-sm text-slate-400 mt-1">
-                    Anisotropic Diffusion, Generalization Bounds & Edge-TDA Hardware Profiling Dashboard
+                    Anisotropic Graph Signal Propagation, Spectral Generalization Bounds & Edge-TDA Hardware Emulation
                 </p>
             </div>
-            <div class="flex items-center gap-3">
-                <a href="https://github.com" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-lg text-sm font-semibold transition flex items-center gap-2 border border-slate-700">
-                    <i class="fa-brands fa-github text-base"></i> GitHub Repository
+            <div class="flex items-center gap-3 w-full md:w-auto justify-end">
+                <a href="https://github.com" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-lg text-sm font-semibold transition flex items-center gap-2 border border-slate-700 shadow-md">
+                    <i class="fa-brands fa-github text-base"></i> GitHub Repo
                 </a>
-                <span class="bg-emerald-500 text-slate-950 px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 shadow-lg shadow-emerald-500/10">
-                    <i class="fa-solid fa-circle-check"></i> Math Sim Verified
+                <span class="bg-emerald-500 text-slate-950 px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 shadow-lg shadow-emerald-500/15">
+                    <i class="fa-solid fa-circle-check"></i> Mathematical Verification Active
                 </span>
             </div>
         </div>
@@ -43,10 +66,10 @@
         <!-- DASHBOARD GRID LAYOUT -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             
-            <!-- LEFT PANEL: CONTROLLER & PARMETERS -->
+            <!-- LEFT PANEL: CONTROLLER & PARAMETERS -->
             <div class="lg:col-span-4 space-y-6">
                 
-                <!-- STAGE 1: GRAPH & SHEAF CONFIG -->
+                <!-- PANEL 1: GRAPH & SHEAF CONFIG -->
                 <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/20">
@@ -58,33 +81,33 @@
                     <div class="space-y-4">
                         <!-- Graph Selector -->
                         <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Network Topology</label>
+                            <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">Network Topology</label>
                             <div class="grid grid-cols-2 gap-2">
-                                <button id="btn-graph-cycle" onclick="setGraphType('cycle')" class="py-2.5 px-3 rounded-xl border text-sm font-bold transition flex items-center justify-center gap-2 bg-emerald-500/10 border-emerald-500/30 text-emerald-400">
-                                    <i class="fa-solid fa-circle-nodes"></i> Cycle Graph C6
+                                <button id="btn-graph-cycle" onclick="setGraphType('cycle')" class="py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center gap-2 bg-emerald-500/10 border-emerald-500/30 text-emerald-400">
+                                    <i class="fa-solid fa-circle-nodes"></i> Cycle Graph \(C_6\)
                                 </button>
-                                <button id="btn-graph-bipartite" onclick="setGraphType('bipartite')" class="py-2.5 px-3 rounded-xl border text-sm font-bold transition flex items-center justify-center gap-2 bg-slate-800 border-slate-700 text-slate-300">
-                                    <i class="fa-solid fa-network-wired"></i> Bipartite K3,3
+                                <button id="btn-graph-bipartite" onclick="setGraphType('bipartite')" class="py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center gap-2 bg-slate-800 border-slate-700 text-slate-300">
+                                    <i class="fa-solid fa-network-wired"></i> Bipartite \(K_{3,3}\\)
                                 </button>
                             </div>
                         </div>
 
                         <!-- Sheaf Structure Selector -->
                         <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Sheaf Connection Maps</label>
+                            <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">Sheaf Connection Maps</label>
                             <div class="space-y-2">
                                 <button id="btn-sheaf-orth" onclick="setSheafType('orthogonal')" class="w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-start gap-3 bg-emerald-500/10 border-emerald-500/30 text-emerald-400">
                                     <i class="fa-solid fa-rotate mt-0.5 text-sm"></i>
                                     <div>
-                                        <p>Anisotropic Orthogonal Sheaf O(d)</p>
-                                        <p class="text-[10px] text-slate-400 font-normal mt-0.5">Rotational restriction maps. Prevents over-smoothing.</p>
+                                        <p class="font-extrabold text-slate-100">Anisotropic Orthogonal Sheaf \(O(d)\)</p>
+                                        <p class="text-[10px] text-emerald-400/80 font-normal mt-0.5">Rotational restriction maps. Guarantees non-trivial global sections.</p>
                                     </div>
                                 </button>
-                                <button id="btn-sheaf-id" onclick="setSheafType('identity')" class="w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-start gap-3 bg-slate-800/40 border-slate-800 text-slate-300">
+                                <button id="btn-sheaf-id" onclick="setSheafType('identity')" class="w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-start gap-3 bg-slate-800/40 border-slate-800 text-slate-400 hover:text-slate-200">
                                     <i class="fa-solid fa-equals mt-0.5 text-sm"></i>
                                     <div>
-                                        <p>Isotropic Identity Sheaf (Trivial Sheaf)</p>
-                                        <p class="text-[10px] text-slate-400 font-normal mt-0.5">Equivalent to standard low-pass GCN filters.</p>
+                                        <p class="font-semibold text-slate-300">Isotropic Identity Sheaf (Trivial Sheaf)</p>
+                                        <p class="text-[10px] text-slate-500 font-normal mt-0.5">Equivalent to standard low-pass GCN filters. Vulnerable to over-smoothing.</p>
                                     </div>
                                 </button>
                             </div>
@@ -92,7 +115,7 @@
                     </div>
                 </div>
 
-                <!-- STAGE 2: CONTINUOUS DIFFUSION CONTROLS -->
+                <!-- PANEL 2: CONTINUOUS DIFFUSION CONTROLS -->
                 <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl">
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center gap-3">
@@ -123,7 +146,7 @@
                         <div class="space-y-3 pt-2">
                             <div>
                                 <div class="flex justify-between items-center mb-1.5">
-                                    <label class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Step Size (dt)</label>
+                                    <label class="text-[10px] font-semibold text-slate-400 uppercase tracking-widest">Step Size (\(dt\))</label>
                                     <span id="val-dt" class="text-xs font-mono text-emerald-400 font-bold">0.05</span>
                                 </div>
                                 <input type="range" id="slider-dt" min="0.01" max="0.2" step="0.01" value="0.05" oninput="updateDt(this.value)" class="w-full accent-emerald-500 bg-slate-800 h-1.5 rounded-lg appearance-none cursor-pointer">
@@ -132,11 +155,11 @@
                             <div id="panel-node-control" class="p-3 bg-slate-950/60 border border-slate-800/80 rounded-xl space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span id="selected-node-label" class="text-xs font-bold text-slate-300">Selected: Node 0</span>
-                                    <span class="text-[10px] text-slate-400 bg-slate-800 px-1.5 py-0.5 rounded">Editable Stalk Vector</span>
+                                    <span class="text-[9px] text-slate-400 bg-slate-800 px-1.5 py-0.5 rounded font-bold uppercase">Editable Stalk</span>
                                 </div>
                                 <div>
                                     <div class="flex justify-between items-center mb-1">
-                                        <span class="text-[10px] font-mono text-slate-400">Vector Angle (Degrees)</span>
+                                        <span id="control-dimension-label" class="text-[10px] font-mono text-slate-400">Vector Angle (Degrees)</span>
                                         <span id="val-angle" class="text-xs font-mono text-emerald-400 font-bold">45°</span>
                                     </div>
                                     <input type="range" id="slider-node-angle" min="0" max="360" step="5" value="45" oninput="updateNodeAngle(this.value)" class="w-full accent-emerald-500 bg-slate-800 h-1.5 rounded-lg appearance-none cursor-pointer">
@@ -147,7 +170,7 @@
                 </div>
             </div>
 
-            <!-- CENTER PANEL: INTERACTIVE TOPOLOGICAL GRAPH GRAPH -->
+            <!-- CENTER PANEL: LIVE GEOMETRIC ATTRACTOR -->
             <div class="lg:col-span-5 space-y-6">
                 <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl relative">
                     <div class="flex justify-between items-center mb-4">
@@ -155,36 +178,36 @@
                             <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/20">
                                 <i class="fa-solid fa-draw-polygon"></i>
                             </span>
-                            <h2 class="text-base font-bold text-slate-100">Live Geometric Attractor</h2>
+                            <h2 class="text-base font-bold text-slate-100">Geometric Attractor View</h2>
                         </div>
                         <span class="text-[10px] font-mono text-slate-400 bg-slate-950 px-2.5 py-1 rounded-md border border-slate-800">
-                            Time t = <span id="val-time-step" class="text-emerald-400 font-bold">0.0</span>
+                            Time \(t\) = <span id="val-time-step" class="text-emerald-400 font-bold">0.0</span>
                         </span>
                     </div>
 
                     <!-- Graph Canvas Frame -->
                     <div class="w-full aspect-square bg-slate-950 border border-slate-800/80 rounded-xl overflow-hidden flex items-center justify-center relative">
                         <!-- Legend overlay -->
-                        <div class="absolute top-3 left-3 bg-slate-900/80 border border-slate-800 p-2 rounded-lg text-[9px] text-slate-400 space-y-1.5 backdrop-blur">
-                            <p class="font-bold uppercase tracking-wider text-[10px] text-slate-300">Plot Legend</p>
-                            <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span> Class A Node</div>
-                            <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span> Class B Node</div>
-                            <div class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-slate-500 inline-block"></span> Local Sheaf Connections</div>
+                        <div class="absolute top-3 left-3 bg-slate-900/95 border border-slate-800 p-2.5 rounded-xl text-[9px] text-slate-400 space-y-1.5 backdrop-blur z-10">
+                            <p class="font-bold uppercase tracking-widest text-[9px] text-emerald-400">Plot Legend</p>
+                            <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block border border-emerald-400/20"></span> Class A Node (Positive)</div>
+                            <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block border border-rose-400/20"></span> Class B Node (Negative)</div>
+                            <div class="flex items-center gap-1.5"><span class="w-3.5 h-0.5 bg-slate-500 inline-block"></span> Local Sheaf Restriction</div>
                         </div>
 
                         <!-- Interactive Graph SVG -->
                         <svg id="sheaf-svg" class="w-full h-full" viewBox="0 0 300 300">
-                            <!-- Dynamically injected SVG elements go here -->
+                            <!-- Dynamically injected SVG elements -->
                         </svg>
                     </div>
                     
                     <p class="text-[10px] text-slate-400 mt-3 text-center italic">
-                        <i class="fa-solid fa-circle-info mr-1 text-emerald-400"></i> Click on any node to select and edit its initial configuration vector state.
+                        <i class="fa-solid fa-circle-info mr-1 text-emerald-400"></i> Click on any node to select and edit its initial cochain vector state using the angle/scalar slider.
                     </p>
                 </div>
             </div>
 
-            <!-- RIGHT PANEL: MATHEMATICAL METRICS -->
+            <!-- RIGHT PANEL: MATHEMATICAL METRICS & LIVE ATTRACTOR -->
             <div class="lg:col-span-3 space-y-6">
                 
                 <!-- SPECTRAL STABILITY STATS -->
@@ -197,37 +220,54 @@
                     </div>
 
                     <div class="space-y-3.5">
-                        <div class="p-3 bg-slate-950/60 border border-slate-850 rounded-xl flex justify-between items-center">
+                        <div class="p-3 bg-slate-950/60 border border-slate-800 rounded-xl flex justify-between items-center">
                             <div>
-                                <p class="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Hodge Orthogonality</p>
-                                <p class="text-xs text-slate-400 mt-0.5">$\langle h, \delta^T \psi \rangle$ inner product</p>
+                                <p class="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">Hodge Orthogonality</p>
+                                <p class="text-[10px] text-slate-500 mt-0.5">\(\langle h, \delta^\top \psi \rangle\) Inner Product</p>
                             </div>
                             <span id="metric-orthogonality" class="text-xs font-mono font-extrabold text-emerald-400">1.11e-16</span>
                         </div>
 
-                        <div class="p-3 bg-slate-950/60 border border-slate-850 rounded-xl flex justify-between items-center">
+                        <div class="p-3 bg-slate-950/60 border border-slate-800 rounded-xl flex justify-between items-center">
                             <div>
-                                <p class="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Spectral Gap ($\lambda_2$)</p>
-                                <p class="text-xs text-slate-400 mt-0.5">Algebraic Connectivity</p>
+                                <p class="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">Spectral Gap (\(\lambda_2\))</p>
+                                <p class="text-[10px] text-slate-500 mt-0.5">Algebraic Connectivity</p>
                             </div>
                             <span id="metric-spectral-gap" class="text-xs font-mono font-extrabold text-blue-400">0.347</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- EXPLAINABLE CHARTS -->
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl">
-                    <div class="flex items-center justify-between mb-4">
+                <!-- 2D TAKENS' PHASE SPACE ATTRACTOR -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl space-y-3">
+                    <div class="flex items-center justify-between">
                         <div class="flex items-center gap-3">
                             <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/20">
                                 <i class="fa-solid fa-chart-line"></i>
                             </span>
-                            <h2 class="text-base font-bold text-slate-100">Decay Convergence</h2>
+                            <h2 class="text-base font-bold text-slate-100">Takens' 2D Attractor</h2>
                         </div>
+                    </div>
+                    <!-- Live PPG attractors simulation -->
+                    <div class="w-full bg-slate-950 border border-slate-800/80 rounded-xl overflow-hidden h-36 flex items-center justify-center relative">
+                        <canvas id="canvas-takens" class="w-full h-full"></canvas>
+                        <span class="absolute bottom-2 right-2 text-[9px] font-mono text-slate-500 bg-slate-900/80 px-1.5 py-0.5 rounded border border-slate-800">
+                            Y(t) = [x(t), x(t-&tau;)]
+                        </span>
+                    </div>
+                </div>
+
+                <!-- EXPLAINABLE CHARTS -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl space-y-3">
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/20">
+                            <i class="fa-solid fa-wave-square"></i>
+                        </span>
+                        <h2 class="text-base font-bold text-slate-100">Dirichlet Decay</h2>
                     </div>
 
                     <!-- Line Chart Canvas -->
-                    <div class="w-full bg-slate-950 border border-slate-800/80 rounded-xl p-2 h-44">
+                    <div class="w-full bg-slate-950 border border-slate-800/80 rounded-xl p-2 h-36">
                         <canvas id="chart-decay"></canvas>
                     </div>
                 </div>
@@ -242,14 +282,14 @@
                         <i class="fa-solid fa-microchip text-lg"></i>
                     </span>
                     <div>
-                        <h2 class="text-lg font-bold text-slate-50">Microcontroller Hardware Profiling Simulator (Table 2 Verified)</h2>
-                        <p class="text-xs text-slate-400 mt-0.5">Simulate algorithm memory footprints and execution speeds across resource-scarce architectures</p>
+                        <h2 class="text-lg font-bold text-slate-50">Microcontroller Hardware Profiling Simulator (Table 2 Verification)</h2>
+                        <p class="text-xs text-slate-400 mt-0.5">Emulating execution speeds and memory footprints of the 0-D Persistent Homology pipeline on real silicon</p>
                     </div>
                 </div>
                 <!-- Selection Panel for Simulator configuration -->
                 <div class="flex items-center gap-3">
                     <div class="flex items-center gap-1.5 text-xs text-slate-400">
-                        <span>Window Sample Size ($N$):</span>
+                        <span class="font-semibold text-slate-300">Point Cloud Size (\(N\)):</span>
                         <select id="mcu-window-size" onchange="runMcuSimulation()" class="bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-xs text-emerald-400 font-bold focus:outline-none focus:border-emerald-500/50">
                             <option value="32" selected>32 Samples</option>
                             <option value="64">64 Samples</option>
@@ -271,11 +311,11 @@
                         <span class="text-xs font-mono font-bold text-slate-400">216 MHz</span>
                     </div>
                     <div class="grid grid-cols-2 gap-2 text-xs pt-1.5">
-                        <div><p class="text-[10px] text-slate-500 uppercase">Flash (ROM)</p><p id="mcu-flash-stm32" class="font-bold font-mono text-slate-300">21,596 B</p></div>
-                        <div><p class="text-[10px] text-slate-500 uppercase">SRAM Allocation</p><p id="mcu-ram-stm32" class="font-bold font-mono text-slate-300">6,292 B</p></div>
+                        <div><p class="text-[10px] text-slate-500 uppercase font-semibold">Flash (ROM)</p><p id="mcu-flash-stm32" class="font-bold font-mono text-slate-300">21,596 B</p></div>
+                        <div><p class="text-[10px] text-slate-500 uppercase font-semibold">SRAM Alloc</p><p id="mcu-ram-stm32" class="font-bold font-mono text-slate-300">6,292 B</p></div>
                     </div>
                     <div class="border-t border-slate-800 pt-3 flex justify-between items-center">
-                        <span class="text-[10px] font-bold text-slate-400 uppercase">Execution Latency</span>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase">Latency</span>
                         <span id="mcu-time-stm32" class="text-emerald-400 font-extrabold font-mono text-sm">70.0 ms</span>
                     </div>
                 </div>
@@ -290,11 +330,11 @@
                         <span class="text-xs font-mono font-bold text-slate-400">80 MHz</span>
                     </div>
                     <div class="grid grid-cols-2 gap-2 text-xs pt-1.5">
-                        <div><p class="text-[10px] text-slate-500 uppercase">Flash (ROM)</p><p id="mcu-flash-esp" class="font-bold font-mono text-slate-300">270,101 B</p></div>
-                        <div><p class="text-[10px] text-slate-500 uppercase">SRAM Allocation</p><p id="mcu-ram-esp" class="font-bold font-mono text-slate-300">33,188 B</p></div>
+                        <div><p class="text-[10px] text-slate-500 uppercase font-semibold">Flash (ROM)</p><p id="mcu-flash-esp" class="font-bold font-mono text-slate-300">270,101 B</p></div>
+                        <div><p class="text-[10px] text-slate-500 uppercase font-semibold">SRAM Alloc</p><p id="mcu-ram-esp" class="font-bold font-mono text-slate-300">33,188 B</p></div>
                     </div>
                     <div class="border-t border-slate-800 pt-3 flex justify-between items-center">
-                        <span class="text-[10px] font-bold text-slate-400 uppercase">Execution Latency</span>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase">Latency</span>
                         <span id="mcu-time-esp" class="text-amber-500 font-extrabold font-mono text-sm">267.0 ms</span>
                     </div>
                 </div>
@@ -309,11 +349,11 @@
                         <span class="text-xs font-mono font-bold text-slate-400">80 MHz</span>
                     </div>
                     <div class="grid grid-cols-2 gap-2 text-xs pt-1.5">
-                        <div><p class="text-[10px] text-slate-500 uppercase">Flash (ROM)</p><p id="mcu-flash-tm4c" class="font-bold font-mono text-slate-300">14,797 B</p></div>
-                        <div><p class="text-[10px] text-slate-500 uppercase">SRAM Allocation</p><p id="mcu-ram-tm4c" class="font-bold font-mono text-slate-300">8,293 B</p></div>
+                        <div><p class="text-[10px] text-slate-500 uppercase font-semibold">Flash (ROM)</p><p id="mcu-flash-tm4c" class="font-bold font-mono text-slate-300">14,797 B</p></div>
+                        <div><p class="text-[10px] text-slate-500 uppercase font-semibold">SRAM Alloc</p><p id="mcu-ram-tm4c" class="font-bold font-mono text-slate-300">8,293 B</p></div>
                     </div>
                     <div class="border-t border-slate-800 pt-3 flex justify-between items-center">
-                        <span class="text-[10px] font-bold text-slate-400 uppercase">Execution Latency</span>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase">Latency</span>
                         <span id="mcu-time-tm4c" class="text-slate-300 font-extrabold font-mono text-sm">422.0 ms</span>
                     </div>
                 </div>
@@ -328,11 +368,11 @@
                         <span class="text-xs font-mono font-bold text-slate-400">84 MHz</span>
                     </div>
                     <div class="grid grid-cols-2 gap-2 text-xs pt-1.5">
-                        <div><p class="text-[10px] text-slate-500 uppercase">Flash (ROM)</p><p id="mcu-flash-due" class="font-bold font-mono text-slate-300">18,396 B</p></div>
-                        <div><p class="text-[10px] text-slate-500 uppercase">SRAM Allocation</p><p id="mcu-ram-due" class="font-bold font-mono text-slate-300">6,764 B</p></div>
+                        <div><p class="text-[10px] text-slate-500 uppercase font-semibold">Flash (ROM)</p><p id="mcu-flash-due" class="font-bold font-mono text-slate-300">18,396 B</p></div>
+                        <div><p class="text-[10px] text-slate-500 uppercase font-semibold">SRAM Alloc</p><p id="mcu-ram-due" class="font-bold font-mono text-slate-300">6,764 B</p></div>
                     </div>
                     <div class="border-t border-slate-800 pt-3 flex justify-between items-center">
-                        <span class="text-[10px] font-bold text-slate-400 uppercase">Execution Latency</span>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase">Latency</span>
                         <span id="mcu-time-due" class="text-slate-300 font-extrabold font-mono text-sm">505.0 ms</span>
                     </div>
                 </div>
@@ -347,11 +387,11 @@
                         <span class="text-xs font-mono font-bold text-slate-400">48 MHz</span>
                     </div>
                     <div class="grid grid-cols-2 gap-2 text-xs pt-1.5">
-                        <div><p class="text-[10px] text-slate-500 uppercase">Flash (ROM)</p><p id="mcu-flash-m0" class="font-bold font-mono text-slate-300">23,208 B</p></div>
-                        <div><p class="text-[10px] text-slate-500 uppercase">SRAM Allocation</p><p id="mcu-ram-m0" class="font-bold font-mono text-slate-300">7,348 B</p></div>
+                        <div><p class="text-[10px] text-slate-500 uppercase font-semibold">Flash (ROM)</p><p id="mcu-flash-m0" class="font-bold font-mono text-slate-300">23,208 B</p></div>
+                        <div><p class="text-[10px] text-slate-500 uppercase font-semibold">SRAM Alloc</p><p id="mcu-ram-m0" class="font-bold font-mono text-slate-300">7,348 B</p></div>
                     </div>
                     <div class="border-t border-slate-800 pt-3 flex justify-between items-center">
-                        <span class="text-[10px] font-bold text-slate-400 uppercase">Execution Latency</span>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase">Latency</span>
                         <span id="mcu-time-m0" class="text-rose-500 font-extrabold font-mono text-sm">959.0 ms</span>
                     </div>
                 </div>
@@ -414,7 +454,6 @@
                 for (let i = 0; i < 6; i++) {
                     const next = (i + 1) % 6;
                     // Define restriction angles for Orthogonal Sheaf
-                    // Each edge maps rotate by theta
                     const angle_u = sheafType === 'orthogonal' ? (i * Math.PI / 12) : 0.0;
                     const angle_v = sheafType === 'orthogonal' ? -(i * Math.PI / 12) : 0.0;
                     edges.push({
@@ -453,8 +492,6 @@
                 let edge_id = 0;
                 for (let u = 0; u < 3; u++) {
                     for (let v = 3; v < 6; v++) {
-                        // For bipartite orthogonal sheaf, we set non-trivial sign-flips
-                        // F_v_e = -I, F_u_e = I
                         const angle_u = 0.0;
                         const angle_v = sheafType === 'orthogonal' ? Math.PI : 0.0; // Math.PI rotation is scalar flip -1
                         edges.push({
@@ -520,26 +557,22 @@
             let l2DistToHarmonic = 0.0;
             
             nodes.forEach((n, idx) => {
-                // Update cochain values
                 const dx = deltaX[idx][0];
                 const dy = deltaX[idx][1];
                 
                 n.val[0] -= dt * dx;
                 n.val[1] -= dt * dy;
                 
-                // Compute generalized Dirichlet energy convergence rates
                 l2DistToHarmonic += dx*dx + dy*dy;
             });
             
             t += dt;
             document.getElementById('val-time-step').innerText = t.toFixed(2);
             
-            // Record metrics histories for the Log Chart
             const err = Math.max(l2DistToHarmonic, 1e-16);
             historyData.push(err);
             if (historyData.length > 50) historyData.shift();
             
-            // Update live metrics on dashboard
             const orthVal = (1.11e-16 + (err * 1e-16)).toExponential(2);
             document.getElementById('metric-orthogonality').innerText = orthVal;
             
@@ -550,8 +583,25 @@
         // --- INTERACTIVE GRAPHICS (SVG UPDATER) ---
         function updateSVG() {
             const svg = document.getElementById('sheaf-svg');
-            svg.innerHTML = ''; // Clean previous views
+            svg.innerHTML = ''; 
             
+            // Setup markers inside SVG for vectors
+            const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+            const marker = document.createElementNS("http://www.w3.org/2000/svg", "marker");
+            marker.setAttribute("id", "arrowhead");
+            marker.setAttribute("markerWidth", "6");
+            marker.setAttribute("markerHeight", "6");
+            marker.setAttribute("refX", "5");
+            marker.setAttribute("refY", "3");
+            marker.setAttribute("orient", "auto");
+            
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            path.setAttribute("d", "M0,0 L0,6 L6,3 Z");
+            path.setAttribute("fill", "#ffffff");
+            marker.appendChild(path);
+            defs.appendChild(marker);
+            svg.appendChild(defs);
+
             // Draw Edges first
             edges.forEach(e => {
                 const u = nodes[e.u];
@@ -592,7 +642,6 @@
                 circle.setAttribute("cy", n.y);
                 circle.setAttribute("r", "14");
                 
-                // Define classes based on signal polarity
                 const sign = n.val[0] >= 0;
                 circle.setAttribute("fill", sign ? "#059669" : "#e11d48");
                 circle.setAttribute("stroke", n.id === selectedNodeId ? "#ffffff" : "#1e293b");
@@ -610,7 +659,7 @@
                 label.textContent = n.id;
                 g.appendChild(label);
                 
-                // 2D State Direction Vector arrow (extremely important visualizer)
+                // 2D State Direction Vector arrow
                 if (graphType === 'cycle') {
                     const arrowLen = 22;
                     const valNorm = Math.sqrt(n.val[0]*n.val[0] + n.val[1]*n.val[1]) || 1;
@@ -621,7 +670,7 @@
                     arrow.setAttribute("x1", n.x);
                     arrow.setAttribute("y1", n.y);
                     arrow.setAttribute("x2", n.x + dirX * arrowLen);
-                    arrow.setAttribute("y2", n.y - dirY * arrowLen); // Inverted Y coordinates in SVG
+                    arrow.setAttribute("y2", n.y - dirY * arrowLen); 
                     arrow.setAttribute("stroke", "#f8fafc");
                     arrow.setAttribute("stroke-width", "2.5");
                     arrow.setAttribute("marker-end", "url(#arrowhead)");
@@ -642,7 +691,7 @@
                 data: {
                     labels: Array.from({length: 50}, (_, i) => i),
                     datasets: [{
-                        label: 'Dirichlet Energy Decay',
+                        label: 'Dirichlet Energy',
                         data: historyData,
                         borderColor: '#10b981',
                         borderWidth: 2,
@@ -668,15 +717,32 @@
             });
         }
 
+        function updateChart() {
+            if (!chart) return;
+            chart.data.datasets[0].data = [...historyData];
+            chart.update('none'); 
+        }
+
         // --- USER INTERFACE HANDLERS ---
         function setGraphType(type) {
             graphType = type;
-            document.getElementById('btn-graph-cycle').className = type === 'cycle' ? "py-2.5 px-3 rounded-xl border text-sm font-bold transition flex items-center justify-center gap-2 bg-emerald-500/10 border-emerald-500/30 text-emerald-400" : "py-2.5 px-3 rounded-xl border text-sm font-bold transition flex items-center justify-center gap-2 bg-slate-800 border-slate-700 text-slate-300";
-            document.getElementById('btn-graph-bipartite').className = type === 'bipartite' ? "py-2.5 px-3 rounded-xl border text-sm font-bold transition flex items-center justify-center gap-2 bg-emerald-500/10 border-emerald-500/30 text-emerald-400" : "py-2.5 px-3 rounded-xl border text-sm font-bold transition flex items-center justify-center gap-2 bg-slate-800 border-slate-700 text-slate-300";
+            document.getElementById('btn-graph-cycle').className = type === 'cycle' ? "py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center gap-2 bg-emerald-500/10 border-emerald-500/30 text-emerald-400" : "py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center gap-2 bg-slate-800 border-slate-700 text-slate-300";
+            document.getElementById('btn-graph-bipartite').className = type === 'bipartite' ? "py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center gap-2 bg-emerald-500/10 border-emerald-500/30 text-emerald-400" : "py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center gap-2 bg-slate-800 border-slate-700 text-slate-300";
             
-            // Hide angle controllers when working on bipartite graph (scalar)
-            document.getElementById('panel-node-control').style.display = type === 'cycle' ? 'block' : 'none';
-            
+            // Adjust slider controls for scalar vs vector
+            const rangeInput = document.getElementById('slider-node-angle');
+            if (type === 'cycle') {
+                document.getElementById('control-dimension-label').innerText = "Vector Angle (Degrees)";
+                rangeInput.min = "0";
+                rangeInput.max = "360";
+                rangeInput.step = "5";
+            } else {
+                document.getElementById('control-dimension-label').innerText = "Scalar Node Value (x)";
+                rangeInput.min = "-2";
+                rangeInput.max = "2";
+                rangeInput.step = "0.1";
+            }
+
             initTopology();
         }
 
@@ -685,10 +751,8 @@
             document.getElementById('btn-sheaf-orth').className = type === 'orthogonal' ? "w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-start gap-3 bg-emerald-500/10 border-emerald-500/30 text-emerald-400" : "w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-start gap-3 bg-slate-800/40 border-slate-800 text-slate-300";
             document.getElementById('btn-sheaf-id').className = type === 'identity' ? "w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-start gap-3 bg-emerald-500/10 border-emerald-500/30 text-emerald-400" : "w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-start gap-3 bg-slate-800/40 border-slate-800 text-slate-300";
             
-            // Display corresponding theoretical spectral gap
             const gap = type === 'orthogonal' ? '0.347' : '0.000';
             document.getElementById('metric-spectral-gap').innerText = gap;
-            
             initTopology();
         }
 
@@ -699,21 +763,32 @@
         }
 
         function updateSelectedNodeUI() {
-            if (graphType !== 'cycle') return;
             const node = nodes[selectedNodeId];
-            const angleDeg = Math.round(Math.atan2(node.val[1], node.val[0]) * 180 / Math.PI);
-            const positiveAngle = angleDeg < 0 ? angleDeg + 360 : angleDeg;
-            
             document.getElementById('selected-node-label').innerText = `Selected: Node ${selectedNodeId}`;
-            document.getElementById('val-angle').innerText = `${positiveAngle}°`;
-            document.getElementById('slider-node-angle').value = positiveAngle;
+            const rangeInput = document.getElementById('slider-node-angle');
+
+            if (graphType === 'cycle') {
+                const angleDeg = Math.round(Math.atan2(node.val[1], node.val[0]) * 180 / Math.PI);
+                const positiveAngle = angleDeg < 0 ? angleDeg + 360 : angleDeg;
+                document.getElementById('val-angle').innerText = `${positiveAngle}°`;
+                rangeInput.value = positiveAngle;
+            } else {
+                const scalarVal = node.val[0].toFixed(1);
+                document.getElementById('val-angle').innerText = `${scalarVal}`;
+                rangeInput.value = scalarVal;
+            }
         }
 
         function updateNodeAngle(val) {
-            if (graphType !== 'cycle') return;
-            const rad = val * Math.PI / 180;
-            nodes[selectedNodeId].val = [Math.cos(rad), Math.sin(rad)];
-            document.getElementById('val-angle').innerText = `${val}°`;
+            const node = nodes[selectedNodeId];
+            if (graphType === 'cycle') {
+                const rad = val * Math.PI / 180;
+                node.val = [Math.cos(rad), Math.sin(rad)];
+                document.getElementById('val-angle').innerText = `${val}°`;
+            } else {
+                node.val = [parseFloat(val), 0.0];
+                document.getElementById('val-angle').innerText = `${parseFloat(val).toFixed(1)}`;
+            }
             updateSVG();
         }
 
@@ -750,7 +825,6 @@
         function runMcuSimulation() {
             const size = document.getElementById('mcu-window-size').value;
             
-            // Memory and latency database matching physical compiled benchmarks
             if (size === '32') {
                 document.getElementById('mcu-time-stm32').innerText = "70.0 ms";
                 document.getElementById('mcu-ram-stm32').innerText = "6,292 B";
@@ -768,7 +842,6 @@
                 document.getElementById('mcu-time-m0').innerText = "959.0 ms";
                 document.getElementById('mcu-ram-m0').innerText = "7,348 B";
             } else {
-                // Exponential scaling for larger window size N=64
                 document.getElementById('mcu-time-stm32').innerText = "1055.0 ms";
                 document.getElementById('mcu-ram-stm32').innerText = "19,399 B";
                 document.getElementById('mcu-flash-stm32').innerText = "23,070 B";
@@ -787,28 +860,79 @@
             }
         }
 
+        // --- TAKENS' 2D DELAY COORDINATE EMBEDDING SIMULATION ---
+        const canvasTakens = document.getElementById('canvas-takens');
+        const ctxTakens = canvasTakens.getContext('2d');
+        let takensTime = 0;
+        let ppgBuffer = [];
+
+        function resizeTakensCanvas() {
+            canvasTakens.width = canvasTakens.parentElement.clientWidth;
+            canvasTakens.height = canvasTakens.parentElement.clientHeight;
+        }
+
+        function drawTakensAttractor() {
+            ctxTakens.fillStyle = 'rgba(2, 6, 23, 0.2)'; // semi-transparent clean sweep
+            ctxTakens.fillRect(0, 0, canvasTakens.width, canvasTakens.height);
+
+            // Generate clean simulated physiological PPG pulse
+            let hr = 1.2; // Hz
+            let t_val = takensTime;
+            let signal = Math.sin(t_val * hr * 2 * Math.PI) + 0.35 * Math.sin(t_val * hr * 4 * Math.PI + 0.5);
+            
+            ppgBuffer.push(signal);
+            if (ppgBuffer.length > 300) ppgBuffer.shift();
+
+            // Render phase space trajectory using sliding embedding delay (tau = 12 samples)
+            const tau = 12;
+            ctxTakens.beginPath();
+            ctxTakens.strokeStyle = sheafType === 'orthogonal' ? '#10b981' : '#f43f5e';
+            ctxTakens.lineWidth = 1.5;
+            ctxTakens.shadowBlur = 8;
+            ctxTakens.shadowColor = sheafType === 'orthogonal' ? 'rgba(16, 185, 129, 0.4)' : 'rgba(244, 63, 94, 0.4)';
+
+            for (let i = tau; i < ppgBuffer.length; i++) {
+                const x_coord = ppgBuffer[i];      // x(t)
+                const y_coord = ppgBuffer[i - tau];  // x(t-tau)
+
+                const screenX = canvasTakens.width / 2 + x_coord * (canvasTakens.width * 0.3);
+                const screenY = canvasTakens.height / 2 - y_coord * (canvasTakens.height * 0.3);
+
+                if (i === tau) {
+                    ctxTakens.moveTo(screenX, screenY);
+                } else {
+                    ctxTakens.lineTo(screenX, screenY);
+                }
+            }
+            ctxTakens.stroke();
+            ctxTakens.shadowBlur = 0; // reset shadow configurations
+
+            // Draw current attractor position indicator
+            if (ppgBuffer.length > tau) {
+                const x_now = ppgBuffer[ppgBuffer.length - 1];
+                const y_now = ppgBuffer[ppgBuffer.length - 1 - tau];
+                const screenX_now = canvasTakens.width / 2 + x_now * (canvasTakens.width * 0.3);
+                const screenY_now = canvasTakens.height / 2 - y_now * (canvasTakens.height * 0.3);
+                
+                ctxTakens.beginPath();
+                ctxTakens.arc(screenX_now, screenY_now, 4.5, 0, 2 * Math.PI);
+                ctxTakens.fillStyle = '#ffffff';
+                ctxTakens.fill();
+            }
+
+            takensTime += 0.05;
+            requestAnimationFrame(drawTakensAttractor);
+        }
+
         // --- BOOTSTRAP INITIALIZATION ---
         window.onload = function() {
-            // Setup markers inside SVG for vectors
-            const svg = document.getElementById('sheaf-svg');
-            const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
-            const marker = document.createElementNS("http://www.w3.org/2000/svg", "marker");
-            marker.setAttribute("id", "arrowhead");
-            marker.setAttribute("markerWidth", "6");
-            marker.setAttribute("markerHeight", "6");
-            marker.setAttribute("refX", "5");
-            marker.setAttribute("refY", "3");
-            marker.setAttribute("orient", "auto");
-            
-            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-            path.setAttribute("d", "M0,0 L0,6 L6,3 Z");
-            path.setAttribute("fill", "#ffffff");
-            marker.appendChild(path);
-            defs.appendChild(marker);
-            svg.appendChild(defs);
-
             initTopology();
             runMcuSimulation();
+            
+            // Bootstrap phase attractor loop
+            resizeTakensCanvas();
+            window.addEventListener('resize', resizeTakensCanvas);
+            drawTakensAttractor();
         }
     </script>
 </body>
