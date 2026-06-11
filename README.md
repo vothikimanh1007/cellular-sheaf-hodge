@@ -1,1 +1,64 @@
-# cellular-sheaf-hodge
+# The Persistent Hodge Decomposition of Cellular Sheaves
+
+Source code and accompanying Web App for the scientific paper: **"The Persistent Hodge Decomposition of Cellular Sheaves: Algebraic Stability, Spectral Properties, and Generalization in Topological Deep Learning"** targeting publication in journals such as _Vietnam Journal of Mathematics (VJM)_ or _Acta Mathematica Vietnamica (AMV)_.
+
+## 📂 Directory Structure
+
+cellular-sheaf-hodge/  
+├── README.md # Detailed documentation and guide (This file)  
+├── requirements.txt # Required Python packages  
+├── verify_sheaf_hodge.py # Experiment 1: Mathematical verification of Hodge theory, ODE diffusion, and over-smoothing  
+├── simulate_edge_tda.py # Experiment 2: Edge IoMT deployment simulation and MCU performance benchmarking  
+└── index.html # Interactive visualization Demo Web App (Deployable via GitHub Pages)
+
+## 🛠️ Installation
+
+Requires **Python 3.8+**. Run the following command to install all necessary dependencies:
+
+pip install -r requirements.txt
+
+## 🔬 Experimental Files Description
+
+### 1\. verify_sheaf_hodge.py (Mathematical Simulation & Representation Collapse Mitigation)
+
+This file directly validates 3 core theorems of the paper:
+
+- **Hodge Decomposition (Theorem 4.1):** Decomposes a cochain into its harmonic (global section) and gradient/curl-free components. Measures orthogonality down to machine-level precision (![](data:image/png;base64,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)).
+- **ODE Sheaf Diffusion (Theorem 4.2):** Solves the continuous-time ordinary differential equation governing heat diffusion on a sheaf, demonstrating that the convergence rate is strictly controlled by the spectral gap.
+- **Spectral Stability (Theorem 5.1):** Introduces topological structure perturbations and verifies the analytical limits using Weyl's perturbation theorem.
+- **Over-smoothing Mitigation:** Runs a comparative experiment on a highly heterophilic bipartite graph ![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAgCAYAAABts0pHAAAE/ElEQVR4AeyWa2gUVxTHZx/Zja6tUbPE5rFrQmBrP9hqKo20llIUaq19hBYKFmq1pflQaak0hUrph4LQ0kJbxNJ+6AdroFKlKSUFHxgVVHzERFQkkGQn2WzMkgRFifvIJuvvLJl1ZmdGJCRZBMP555x77pl7//fcc+9dp/KQ/j0iPtcb9yjjBc94IBB4OxgMNoPfLbBBI+j3+xcQ+01+DL71WsxsalOpTE5OdmUymX+Y1Ac+Aq85HI6L4P/x8fHztLPi9XonMK6D9wR8MwkOp9PpDtqzLibiAwMDl/v7+w8w8ygQaVNV9TfQMjg4OCIOAYtwsph6yO4vKipayjeN4IA+RuJmCybiMlEoFHoMvRIokDuJzoCcLOOvuLi4FdLHIbu1u7v7Vq5zjgxL4olEopL5nwJ3KJ0L6JxQ0y/j2w++gPReOgyLoj0nYkmcmZeDxUClZvvQSl1dXREHrwm70el0vhGJRHL1jm/OxY74S8KEUjhHzY5WVlYuHhkZ+QvC66jtLdT7kPQXEibiefV9lNJ40uVynYJkAwtZjV2DXXAxEdfVd5yDuRqGv6K3oM+CErLeiHaAgoqJOGy0+p7HAVzIQjZSGkJ6H30ib7ILy8S4D1zEbAR7wPecjTpi77tY4p4AXwN5+LbV1tY+zje2YkU8W9988Se3xoexWGwMW6SVf1FQwQ48h7YTB5N/Rmeor69vO+X1L/Ft+D7HZynV1dVBOn4mtnliYuJT9FrO0tmKigq53egyi4E4mVlEyBogcoh/8jqiFAUSKkYLUBi4UZ58sfOBX17cTfi3lZeXL4rH45ewL4JN9C1AmwSyK3C+Qxmu5wGMYx8Ecraybwm2SQzEycxSIuTw3WaQK9h6kfu6GUcKvOjz+V5Am2R4eHiMcX6iY5fcSLyqxdh+cJ2+BNokzCVX606yLLuq0C4nKMU4uZeatkEMxOlZBeT+7iIL/dgGwddJtttwOtDvo90gXzKqqrawQ7JIxePxyI+uEs7LjwSmgUlUVR0iflc0Gh2Qq5eAzYz/R2lpqeHxw5+THPGampqFeBuASISHJymGHmVlZWmycHXK93owGFyL7QImoeyep78DAj/QuZ0Hqx1tK5TVfOJ3c912EHQDfNXe3j6OthQnwWtAkmzeJEIj/hZbPIa/VX6W4Fewl/MIycOjHbL5+I9BMMyiA9gG4WCfIovPkACp3ybi9sjrawjSNSirO8R/AoLszt8kqKuqqupZXYjBdBJ4BniBwwJyFWbrkr5rYAkwxEEw0NvbayorbZZoNDoqJMBWFm5LRIuf0tfQPmp9B9qqHJVcqRBglGm22KF6dkd2S2paP4qHRgnIFzfxe0GMazGU1+mnPL15vmxzxomzzXLleclwJDuDoripc7kiu91ud/amYnHfQbRT7mlsyegSYodSqZT2Zsyj7eG7I7p3BNc9cd4zZ8birj4Bacn2Ski9S21/y8j14OOenh5ZjNxIQnYFC3maGyVB/E5I3uRgNrCgzbR/ob0vmUzu5jtLmXHichNA5ksmbyL7YxA4yLVWzdk4NsUgg72D/ldB9oEjvpMFryP2NLhFbW/g7Hxgl20ZZ8aJy6CCcDgcY/L/uAYvyGLEp4NkfRUkuzSfxEisfCPfan47PWvE7SYUP+XwCqRvk/mwtKeDghCH8GEya1u/D7KQghCHmNS2/PbBnJ4Uivj02Oq+emiJ3wUAAP//BEJixQAAAAZJREFUAwDlmD9fB8lVdQAAAABJRU5ErkJggg==) between traditional GCNs and Sheaf Neural Networks (SNNs).
+
+**Usage:**
+
+python verify_sheaf_hodge.py
+
+_Outputs:_ Generates 4 high-DPI, publication-ready figures: fig1_hodge_decomposition.png, fig2_diffusion_convergence.png, fig3_spectral_stability.png, and fig4_oversmoothing_prevention.png.
+
+### 2\. simulate_edge_tda.py (Edge Hardware Simulation & Performance Benchmarking - Table 2)
+
+This file implements the optimized 0-D persistent homology pipeline for edge IoMT devices:
+
+- **Optimized ![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAgCAYAAADqgqNBAAADDklEQVR4AeyVS2gTURSGM7ElIRktWkqklWYIgaIrLSIWN10UpFhBxYXbLlwIorhy5dKd4FrBx0YUraiIFUsXrupCquCjGoo2raEYjCJoNW1efifcSTO5U2mGlHTRcv6ee885c//c85jx+5r4t0HelOSvr7R3d3cfj0ajt8BVFwxKiizLOuHiK8fz/AGJWQ20mxeLxUSpVHrAw2FwEgwZhvEKjOZyuZfsffl8/j0xY6ztmIP4J8AovgT2VYlGnkql3s7NzY3w9Hfgg+RZMpm8Ah7Oz89nxKZi7sta4RH+m6ASo+z/VRq5RPf09GxG7wE+bjOOLgGHdHZ2tmPYDUSey7964UqezWZ3cNAu8Iebf0Rr0tLSEsVogR/gA6hbXMk5ZSfYBqbAZ6CJ3+/fizEEpoLBYApdt6xE3i8ncet31P+nrGtg0Jj7le11IpH4pdZ1KY28pt5HLMu6UztWjNN1emFIMXmqtzyrkVfVe4mAi9zwHhkYqwbE0/i2As/15lmfRo7RrvcbCK+R9pFaQC5juIlY13rH4/EtZOesZAx9JhKJyPuAcKe4kfdLCMSe6h2Lxdp4Gd2mIb/Ozs6eQqdpyLtil3Or4SDnV0oq+ySA26043/j2SQzQ6k2ZBvnhZiAQGMVfEC17sbN3iIOcQ7fjjQGv821AdJhzUkzAb87xof+y/4Z9QPbVcJDj6AWe57ujo0Nq2wVZnnPst2Ke/QL7OH4TXZEKuarJMeX5wgdiUa0rSmK4gT1i06ZpZitODws/HdkHFguFgrxMbPKjra2tC9ifMOdBemGAdVHF2OTDmUxmCd8NeA1Qt/jpyBcgAAwXHOJLlWXUxvFJrBaDbxjWcorpbNGSckyaLITDYYevknYt1IMhnU5LbacoTZc921Jn9vIR+iQXqT62oeRyMESP0e2hUKjcXKZpShO2KTuuZWk4OTeV2Z9gri/RJ73oy3T7mLIvM7NqOPnk5GSO/jgN4QXOj9AH50j3ebGzd0jDydXpJQiT/IinMzMzaWXT1FqRa0Ruhg1yt6ysua2paf8HAAD//82N008AAAAGSURBVAMAnG2LULLnfXUAAAAASUVORK5CYII=)\-PH Algorithm:** Compresses the symmetric distance matrix (saving ![](data:image/png;base64,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) RAM) and utilizes an optimized Union-Find structure with Boolean graph traversal to maximize execution speed.
+- **Embedded Hardware Emulator:** Simulates CPU clock cycle overhead and hardware FPU units to estimate the exact Flash, static SRAM, dynamic Heap footprints, and actual execution latencies across low-power targets: _STM32F767 (Cortex-M7)_, _ESP8266 (Xtensa L106)_, _EK-TM4C123GXL (Cortex-M4F)_, _Arduino Due (Cortex-M3)_, and _Arduino M0+ (Cortex-M0+)_.
+
+**Usage:**
+
+python simulate_edge_tda.py
+
+_Outputs:_ Prints the microcontroller benchmarking metrics corresponding to Table 2 of the manuscript to the console and generates 2 analytical plots: fig5_edge_tda_filtration.png and fig6_mcu_benchmarks.png.
+
+## 🌐 Interactive Web App Demo Deployment (index.html)
+
+The interactive Web App Demo allows users and peer reviewers to directly explore cellular sheaf theory and Hodge dynamics in any modern web browser without any local setup.
+
+### Local Run
+
+Simply download the index.html file to your local machine and double-click to open it in Chrome, Edge, Safari, or Firefox.
+
+### Free Online Deployment via GitHub Pages
+
+- Create a new repository on your personal GitHub account.
+- Push the index.html file to the main branch (main).
+- Navigate to the repository's **Settings -> Pages**.
+- Under **Source**, select the main branch and click **Save**.
+- Within 1-2 minutes, GitHub will provide a public URL like: https://&lt;your_username&gt;.github.io/&lt;your_repo&gt;/. You can embed this link directly in the **Code and Data Availability** section of your manuscript!
